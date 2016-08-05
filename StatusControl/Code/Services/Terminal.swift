@@ -10,26 +10,37 @@ import Foundation
 
 internal struct Terminal {
     
+    enum ResultState: String {
+        case yes = "YES"
+        case no = "NO"
+        case trueState = "true"
+        case falseState = "false"
+    }
+    
     internal static func showAllFiles(boolArgument: Bool) {
-        var boolString = "false"
-        if boolArgument {
-            boolString = "true"
-        }
-        Shell.runCommand("defaults", arguments: "write", "com.apple.finder", "AppleShowAllFiles", boolString)
+        let boolString = boolArgument ? "true" : "false"
+        
+        Shell.runCommand(Constants.Commands.Defaults, arguments: Constants.Commands.Arguments.Write, Constants.Commands.Arguments.Finder_com, Constants.Commands.Arguments.Show_all_files, boolString)
         killallFinder()
     }
     
-    internal static func showAllFilesActive() -> Bool {
-        let result = Shell.runCommand("defaults", arguments: "read", "com.apple.finder", "AppleShowAllFiles")
-        if result == "true" {
+    internal static func showAllFilesActive() -> Bool? {
+        guard let
+            result = Shell.runCommand(Constants.Commands.Defaults, arguments: Constants.Commands.Arguments.Read, Constants.Commands.Arguments.Finder_com, Constants.Commands.Arguments.Show_all_files),
+            state = ResultState(rawValue: result) else {
+                return nil
+        }
+        
+        switch state {
+        case .yes, .trueState:
             return true
-        } else {
+        case .no, .falseState:
             return false
         }
     }
     
     private static func killallFinder() {
-        Shell.runCommand("killall", arguments: "Finder")
+        Shell.runCommand(Constants.Commands.Killall, arguments: Constants.Commands.Arguments.Finder)
     }
     
 }

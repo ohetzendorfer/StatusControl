@@ -41,6 +41,7 @@ internal struct Shell {
         if let result = result.first {
             return result
         }
+        
         return nil
     }
     

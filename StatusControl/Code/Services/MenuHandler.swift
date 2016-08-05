@@ -16,7 +16,7 @@ class MenuHandler: NSObject {
     // MARK: - Init
     override init() {
         super.init()
-
+        
         setupMenu()
     }
     
@@ -24,7 +24,11 @@ class MenuHandler: NSObject {
         let menu = NSMenu()
         menu.delegate = self
         
-        showOrHideFilesMenuItem = NSMenuItem(title: getCurrentAllFilesTitleAndSetBarButtonImage(), action: #selector(showOrHideFinder(_:)), keyEquivalent: "f")
+        guard let title = getCurrentAllFilesTitleAndSetBarButtonImage() else {
+            return
+        }
+        
+        showOrHideFilesMenuItem = NSMenuItem(title: title, action: #selector(showOrHideFinder(_:)), keyEquivalent: "f")
         let seperatorMenuItem = NSMenuItem.separatorItem()
         let quitMenuItem = NSMenuItem(title: "Quit", action: #selector(quitApp(_:)), keyEquivalent: "q")
         
@@ -41,8 +45,10 @@ class MenuHandler: NSObject {
     
     // MARK: - Operations
     private dynamic func showOrHideFinder(sender: AnyObject) {
-        Terminal.showAllFiles(!Terminal.showAllFilesActive())
-        setShowOrHideFilesMenuItem()
+        if let showAllFilesActive = Terminal.showAllFilesActive() {
+            Terminal.showAllFiles(!showAllFilesActive)
+            setShowOrHideFilesMenuItem()
+        }
     }
     
     private dynamic func quitApp(sender: AnyObject) {
@@ -57,15 +63,21 @@ class MenuHandler: NSObject {
     }
     
     private func setShowOrHideFilesMenuItem() {
-        showOrHideFilesMenuItem.title = getCurrentAllFilesTitleAndSetBarButtonImage()
+        if let title = getCurrentAllFilesTitleAndSetBarButtonImage() {
+            showOrHideFilesMenuItem.title = title
+        }
     }
     
-    private func getCurrentAllFilesTitleAndSetBarButtonImage() -> String {
-        if Terminal.showAllFilesActive() {
-            setStatusItemButtonImage("StatusBarButtonImage-active")
+    private func getCurrentAllFilesTitleAndSetBarButtonImage() -> String? {
+        guard let showAllFilesActive = Terminal.showAllFilesActive() else {
+            return nil
+        }
+        
+        if showAllFilesActive {
+            setStatusItemButtonImage(Constants.ImageNames.StatusBarButtonImage_active)
             return "Hide All Files"
         } else {
-            setStatusItemButtonImage("StatusBarButtonImage-inactive")
+            setStatusItemButtonImage(Constants.ImageNames.StatusBarButtonImage_inactive)
             return "Show All Files"
         }
     }

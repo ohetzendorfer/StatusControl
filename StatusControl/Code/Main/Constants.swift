@@ -7,11 +7,29 @@
 //
 
 struct Constants {
-
-    struct ScreensaverKeys {
+    
+    internal struct ScreensaverKeys {
         static let AskForPassword = "askForPassword"
         static let AskForPasswordDelay = "askForPasswordDelay"
         static let TokenRemovalAction = "tokenRemovalAction"
+    }
+    
+    internal struct Commands {
+        static let Defaults = "defaults"
+        static let Killall = "killall"
+        
+        internal struct Arguments {
+            static let Finder = "Finder"
+            static let Read = "read"
+            static let Write = "write"
+            static let Finder_com = "com.apple.finder"
+            static let Show_all_files = "AppleShowAllFiles"
+        }
+    }
+    
+    internal struct ImageNames {
+        static let StatusBarButtonImage_active = "StatusBarButtonImage-active"
+        static let StatusBarButtonImage_inactive = "StatusBarButtonImage-inactive"
     }
     
 }
