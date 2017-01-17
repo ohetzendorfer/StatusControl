@@ -10,8 +10,9 @@ import Cocoa
 
 class MenuHandler: NSObject {
     
-    private let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-2)
-    private var showOrHideFilesMenuItem: NSMenuItem!
+    // MARK: - Properties
+    fileprivate let statusItem = NSStatusBar.system().statusItem(withLength: -2)
+    fileprivate var showOrHideFilesMenuItem: NSMenuItem!
     
     // MARK: - Init
     override init() {
@@ -20,16 +21,17 @@ class MenuHandler: NSObject {
         setupMenu()
     }
     
+    // MARK: - Helpers
     internal func setupMenu() {
         let menu = NSMenu()
         menu.delegate = self
         
-        guard let title = getCurrentAllFilesTitleAndSetBarButtonImage() else {
+        guard let title = getCurrentFilesTitleAndSetBarButtonImage() else {
             return
         }
         
         showOrHideFilesMenuItem = NSMenuItem(title: title, action: #selector(showOrHideFinder(_:)), keyEquivalent: "f")
-        let seperatorMenuItem = NSMenuItem.separatorItem()
+        let seperatorMenuItem = NSMenuItem.separator()
         let quitMenuItem = NSMenuItem(title: "Quit", action: #selector(quitApp(_:)), keyEquivalent: "q")
         
         showOrHideFilesMenuItem.target = self
@@ -44,40 +46,40 @@ class MenuHandler: NSObject {
     }
     
     // MARK: - Operations
-    private dynamic func showOrHideFinder(sender: AnyObject) {
+    fileprivate dynamic func showOrHideFinder(_ sender: AnyObject) {
         if let showAllFilesActive = Terminal.showAllFilesActive() {
             Terminal.showAllFiles(!showAllFilesActive)
             setShowOrHideFilesMenuItem()
         }
     }
     
-    private dynamic func quitApp(sender: AnyObject) {
+    fileprivate dynamic func quitApp(_ sender: AnyObject) {
         NSApp.terminate(self)
     }
     
     // MARK: - Helpers
-    private func setStatusItemButtonImage(imageName: String) {
+    fileprivate func setStatusItemButton(withImageName imageName: String) {
         if let button = statusItem.button {
             button.image = NSImage(named: imageName)
         }
     }
     
-    private func setShowOrHideFilesMenuItem() {
-        if let title = getCurrentAllFilesTitleAndSetBarButtonImage() {
+    fileprivate func setShowOrHideFilesMenuItem() {
+        if let title = getCurrentFilesTitleAndSetBarButtonImage() {
             showOrHideFilesMenuItem.title = title
         }
     }
     
-    private func getCurrentAllFilesTitleAndSetBarButtonImage() -> String? {
+    fileprivate func getCurrentFilesTitleAndSetBarButtonImage() -> String? {
         guard let showAllFilesActive = Terminal.showAllFilesActive() else {
             return nil
         }
         
         if showAllFilesActive {
-            setStatusItemButtonImage(Constants.ImageNames.StatusBarButtonImage_active)
+            setStatusItemButton(withImageName: Constants.ImageNames.StatusBarButtonImage_active)
             return "Hide All Files"
         } else {
-            setStatusItemButtonImage(Constants.ImageNames.StatusBarButtonImage_inactive)
+            setStatusItemButton(withImageName: Constants.ImageNames.StatusBarButtonImage_inactive)
             return "Show All Files"
         }
     }
@@ -86,8 +88,8 @@ class MenuHandler: NSObject {
 
 // MARK: - NSMenuDelegate
 extension MenuHandler: NSMenuDelegate {
-    
-    func menuWillOpen(menu: NSMenu) {
+
+    func menuWillOpen(_ menu: NSMenu) {
         setShowOrHideFilesMenuItem()
     }
     

@@ -11,11 +11,9 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    var menuHandler: MenuHandler!
+    var menuHandler: MenuHandler?
 
-    // MARK: - App LifeCycle
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-        Appearance.setup()
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         menuHandler = MenuHandler()
     }
     

@@ -17,17 +17,17 @@ internal struct Terminal {
         case falseState = "false"
     }
     
-    internal static func showAllFiles(boolArgument: Bool) {
-        let boolString = boolArgument ? "true" : "false"
+    internal static func showAllFiles(_ show: Bool) {
+        let showString = show ? "true" : "false"
         
-        Shell.runCommand(Constants.Commands.Defaults, arguments: Constants.Commands.Arguments.Write, Constants.Commands.Arguments.Finder_com, Constants.Commands.Arguments.Show_all_files, boolString)
+        Shell.run(withCommand: Constants.Commands.Defaults, arguments: Constants.Commands.Arguments.Write, Constants.Commands.Arguments.Finder_com, Constants.Commands.Arguments.Show_all_files, showString)
         killallFinder()
     }
     
     internal static func showAllFilesActive() -> Bool? {
         guard let
-            result = Shell.runCommand(Constants.Commands.Defaults, arguments: Constants.Commands.Arguments.Read, Constants.Commands.Arguments.Finder_com, Constants.Commands.Arguments.Show_all_files),
-            state = ResultState(rawValue: result) else {
+            result = Shell.run(withCommand: Constants.Commands.Defaults, arguments: Constants.Commands.Arguments.Read, Constants.Commands.Arguments.Finder_com, Constants.Commands.Arguments.Show_all_files),
+            let state = ResultState(rawValue: result) else {
                 return nil
         }
         
@@ -39,8 +39,8 @@ internal struct Terminal {
         }
     }
     
-    private static func killallFinder() {
-        Shell.runCommand(Constants.Commands.Killall, arguments: Constants.Commands.Arguments.Finder)
+    fileprivate static func killallFinder() {
+        Shell.run(withCommand: Constants.Commands.Killall, arguments: Constants.Commands.Arguments.Finder)
     }
     
 }

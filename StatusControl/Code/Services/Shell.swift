@@ -10,24 +10,26 @@ import Foundation
 
 internal struct Shell {
     
-    internal static func runCommand(command: String, arguments: String...) -> String? {
+    @discardableResult
+    internal static func run(withCommand command: String, arguments: String...) -> String? {
         var result = [String]()
         // var error = [String]() // TODO: handle error
         
-        let task = NSTask()
+        let task = Process()
         task.launchPath = "/usr/bin/\(command)"
         task.arguments = arguments
         
-        let resultPipe = NSPipe()
+        let resultPipe = Pipe()
         task.standardOutput = resultPipe
-        let errorPipe = NSPipe()
+        let errorPipe = Pipe()
         task.standardError = errorPipe
         task.launch()
         
         let outdata = resultPipe.fileHandleForReading.readDataToEndOfFile()
-        if var string = String.fromCString(UnsafePointer(outdata.bytes)) {
-            string = string.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
-            result = string.componentsSeparatedByString("\n")
+        
+        if var string = String(data: outdata, encoding: String.Encoding.utf8) {
+            string = string.trimmingCharacters(in: CharacterSet.newlines)
+            result = string.components(separatedBy: "\n")
         }
         
         // TODO: error handling
@@ -44,6 +46,5 @@ internal struct Shell {
         
         return nil
     }
-    
     
 }

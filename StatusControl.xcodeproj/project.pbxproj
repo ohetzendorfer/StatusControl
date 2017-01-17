@@ -14,15 +14,12 @@
 		A772F3301C7F6DF500A45918 /* StatusControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A772F32F1C7F6DF500A45918 /* StatusControlTests.swift */; };
 		A772F33B1C7F6DF500A45918 /* StatusControlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A772F33A1C7F6DF500A45918 /* StatusControlUITests.swift */; };
 		A7B8E3671C80C5E5006D0E9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B8E3651C80C5E5006D0E9B /* Main.storyboard */; };
-		A7B8E3931C80C64F006D0E9B /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8E3851C80C64F006D0E9B /* Appearance.swift */; };
 		A7B8E39C1C80C64F006D0E9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8E38B1C80C64F006D0E9B /* AppDelegate.swift */; };
 		A7B8E39D1C80C64F006D0E9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8E38B1C80C64F006D0E9B /* AppDelegate.swift */; };
 		A7B8E39E1C80C64F006D0E9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8E38B1C80C64F006D0E9B /* AppDelegate.swift */; };
 		A7B8E39F1C80C64F006D0E9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8E38C1C80C64F006D0E9B /* Constants.swift */; };
 		A7B8E3A01C80C64F006D0E9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8E38C1C80C64F006D0E9B /* Constants.swift */; };
 		A7B8E3A11C80C64F006D0E9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8E38C1C80C64F006D0E9B /* Constants.swift */; };
-		A7B8E3A91C80C6D5006D0E9B /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8E3851C80C64F006D0E9B /* Appearance.swift */; };
-		A7B8E3AA1C80C6D6006D0E9B /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8E3851C80C64F006D0E9B /* Appearance.swift */; };
 		A7E87D0E1D5387CE00FCA2FA /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E87D0D1D5387CE00FCA2FA /* Terminal.swift */; };
 		A7E87D0F1D5387CE00FCA2FA /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E87D0D1D5387CE00FCA2FA /* Terminal.swift */; };
 		A7E87D101D5387CE00FCA2FA /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E87D0D1D5387CE00FCA2FA /* Terminal.swift */; };
@@ -60,7 +57,6 @@
 		A7B8E3661C80C5E5006D0E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A7B8E3691C80C612006D0E9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7B8E37B1C80C612006D0E9B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7B8E3851C80C64F006D0E9B /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		A7B8E38B1C80C64F006D0E9B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7B8E38C1C80C64F006D0E9B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A7E87D0D1D5387CE00FCA2FA /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
@@ -161,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				A7B8E38A1C80C64F006D0E9B /* Main */,
-				A7B8E3841C80C64F006D0E9B /* Appearance */,
 				A7E87D0C1D5387CE00FCA2FA /* Services */,
 			);
 			path = Code;
@@ -173,14 +168,6 @@
 				A7B8E37B1C80C612006D0E9B /* Info.plist */,
 			);
 			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
-		A7B8E3841C80C64F006D0E9B /* Appearance */ = {
-			isa = PBXGroup;
-			children = (
-				A7B8E3851C80C64F006D0E9B /* Appearance.swift */,
-			);
-			path = Appearance;
 			sourceTree = "<group>";
 		};
 		A7B8E38A1C80C64F006D0E9B /* Main */ = {
@@ -265,18 +252,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Oliver Mastny";
 				TargetAttributes = {
 					A772F3191C7F6DF500A45918 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0820;
 					};
 					A772F32A1C7F6DF500A45918 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = A772F3191C7F6DF500A45918;
 					};
 					A772F3351C7F6DF500A45918 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = A772F3191C7F6DF500A45918;
 					};
 				};
@@ -337,7 +327,6 @@
 				A7E87D0E1D5387CE00FCA2FA /* Terminal.swift in Sources */,
 				A7B8E39F1C80C64F006D0E9B /* Constants.swift in Sources */,
 				A7B8E39C1C80C64F006D0E9B /* AppDelegate.swift in Sources */,
-				A7B8E3931C80C64F006D0E9B /* Appearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +336,6 @@
 			files = (
 				A71948061D539EF80001A1BB /* MenuHandler.swift in Sources */,
 				A772F3301C7F6DF500A45918 /* StatusControlTests.swift in Sources */,
-				A7B8E3A91C80C6D5006D0E9B /* Appearance.swift in Sources */,
 				A7B8E39D1C80C64F006D0E9B /* AppDelegate.swift in Sources */,
 				A7E87D0F1D5387CE00FCA2FA /* Terminal.swift in Sources */,
 				A7E87D171D53954400FCA2FA /* Shell.swift in Sources */,
@@ -361,7 +349,6 @@
 			files = (
 				A71948071D539EF80001A1BB /* MenuHandler.swift in Sources */,
 				A772F33B1C7F6DF500A45918 /* StatusControlUITests.swift in Sources */,
-				A7B8E3AA1C80C6D6006D0E9B /* Appearance.swift in Sources */,
 				A7B8E39E1C80C64F006D0E9B /* AppDelegate.swift in Sources */,
 				A7E87D101D5387CE00FCA2FA /* Terminal.swift in Sources */,
 				A7E87D181D53954400FCA2FA /* Shell.swift in Sources */,
@@ -409,8 +396,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -453,8 +442,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -473,6 +464,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -485,6 +477,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "at.oliver-mastny.StatusControl";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -497,6 +490,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "at.oliver-mastny.StatusControl";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -509,6 +503,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "at.oliver-mastny.StatusControlTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StatusControl.app/Contents/MacOS/StatusControl";
 			};
 			name = Debug;
@@ -522,6 +517,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "at.oliver-mastny.StatusControlTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StatusControl.app/Contents/MacOS/StatusControl";
 			};
 			name = Release;
@@ -534,6 +530,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "at.oliver-mastny.StatusControlUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = StatusControl;
 				USES_XCTRUNNER = YES;
 			};
@@ -547,6 +544,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "at.oliver-mastny.StatusControlUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = StatusControl;
 				USES_XCTRUNNER = YES;
 			};
